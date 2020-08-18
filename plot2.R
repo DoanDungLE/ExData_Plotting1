@@ -1,0 +1,7 @@
+dt1<-read.delim("C:/Users/DELL/Desktop/Coursera/DS Coursera/exdata_data_household_power_consumption/household_power_consumption.txt",sep = ";")
+library(dplyr)
+dt2<-filter(dt1,(Date=="1/2/2007")|(Date=="2/2/2007"))
+datetime<-strptime(paste(dt2$Date," ",dt2$Time),"%d/%m/%Y %H:%M:%S")
+png(file="plot2.png",width = 480, height = 480,units="px")
+plot(datetime,as.numeric(dt2$Global_active_power),type="l",xlab="",ylab="Global Acitve Power")
+dev.off()
